@@ -34,8 +34,8 @@ document.getElementById('site-footer').innerHTML = `
       <div>
         <h4>Contact</h4>
         <ul>
-          <li>021 242 5111</li>
-          <li>info@quiggproperty.ie</li>
+          <li>083 382 0623</li>
+          <li>james.quigg@quiggproperty.com</li>
           <li>Cork, Ireland</li>
         </ul>
       </div>
