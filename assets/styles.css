@@ -182,6 +182,17 @@ section { padding: 96px 0; }
 .split img { border-radius: 4px; box-shadow: var(--shadow); }
 .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 40px; }
 @media (max-width: 800px) { .values { grid-template-columns: 1fr; } }
+
+/* Services grid (homepage "What We Do") */
+.services-grid { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 980px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .services-grid { grid-template-columns: 1fr; } }
+
+/* Testimonials grid override for the 2x2 layout */
+.t-grid-two { grid-template-columns: repeat(2, minmax(0,1fr)); max-width: 900px; margin: 0 auto; }
+@media (max-width: 700px) { .t-grid-two { grid-template-columns: 1fr; } }
+
+html, body { overflow-x: hidden; max-width: 100%; }
 .value-card { text-align: center; padding: 32px 20px; background: var(--white); border-radius: 4px; box-shadow: var(--shadow); }
 .value-card .icon { width: 52px; height: 52px; margin: 0 auto 16px; color: var(--gold); }
 
