@@ -26,7 +26,6 @@
     </nav>
     <div class="header-actions">
       <span class="phone">Call us <strong>083 382 0623</strong></span>
-      <a href="contact.html" class="btn btn-gold">Get Valuation</a>
       <button class="nav-toggle" aria-label="Menu">&#9776;</button>
     </div>
   </div>
@@ -45,7 +44,7 @@
     <div>
       <h2>Send an Enquiry</h2>
       <p>Fill out the form below and a member of our team will be in touch within one business day.</p>
-      <form class="contact-form" data-static>
+      <form class="contact-form" data-mailto="james.quigg@quiggproperty.com">
         <div class="row2">
           <div>
             <label for="name">Full Name</label>
@@ -72,43 +71,34 @@
             </select>
           </div>
         </div>
+        <div class="row2" data-valuation-fields style="display:none;">
+          <div>
+            <label for="prop_address">Property Address</label>
+            <input type="text" id="prop_address" name="prop_address" placeholder="e.g. 12 Westbourne Place, Cobh">
+          </div>
+          <div>
+            <label for="prop_type">Property Type</label>
+            <select id="prop_type" name="prop_type">
+              <option value="">Select...</option>
+              <option>House (detached)</option>
+              <option>House (semi-detached)</option>
+              <option>House (terraced)</option>
+              <option>Bungalow</option>
+              <option>Apartment / Duplex</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="row2" data-valuation-fields style="display:none;">
+          <div>
+            <label for="prop_beds">Approx. Bedrooms</label>
+            <input type="number" id="prop_beds" name="prop_beds" min="0" placeholder="e.g. 3">
+          </div>
+          <div>
+            <label for="prop_size">Approx. Size (sqm)</label>
+            <input type="number" id="prop_size" name="prop_size" min="0" placeholder="e.g. 110">
+          </div>
+        </div>
         <div>
           <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Tell us a little about what you're looking for..."></textarea>
-        </div>
-        <button type="submit" class="btn btn-navy">Send Enquiry</button>
-        <p class="form-status" style="color:var(--gold); font-weight:600;"></p>
-      </form>
-    </div>
-
-    <div>
-      <div class="info-card">
-        <div class="row">
-          <strong style="color:var(--gold);">☎</strong>
-          <div><strong>Phone</strong>083 382 0623</div>
-        </div>
-        <div class="row">
-          <strong style="color:var(--gold);">✉</strong>
-          <div><strong>Email</strong>james.quigg@quiggproperty.com</div>
-        </div>
-        <div class="row">
-          <strong style="color:var(--gold);">⚓</strong>
-          <div><strong>Office</strong>Cork, Ireland</div>
-        </div>
-        <div class="row">
-          <strong style="color:var(--gold);">🕘</strong>
-          <div><strong>Hours</strong>Mon–Fri 9am–6pm · Sat 10am–2pm</div>
-        </div>
-      </div>
-      <div class="map-embed">
-        <iframe src="https://www.google.com/maps?q=Cork,Ireland&output=embed" loading="lazy" title="Quigg Property location map"></iframe>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer class="site-footer" id="site-footer"></footer>
-<script src="assets/footer.js"></script>
-<script src="assets/script.js"></script>
-</body>
-</html>
+          <textarea id="message" name="message" placeholder="Tell us a little about what
