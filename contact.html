@@ -44,7 +44,11 @@
     <div>
       <h2>Send an Enquiry</h2>
       <p>Fill out the form below and a member of our team will be in touch within one business day.</p>
-      <form class="contact-form" data-mailto="james.quigg@quiggproperty.com">
+      <form class="contact-form" action="https://formsubmit.co/james.quigg@quiggproperty.com" method="POST">
+        <input type="hidden" name="_subject" value="New website enquiry — Quigg Property">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://www.quiggproperty.com/contact.html?sent=true">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <div class="row2">
           <div>
             <label for="name">Full Name</label>
@@ -101,4 +105,42 @@
         </div>
         <div>
           <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Tell us a little about what
+          <textarea id="message" name="message" placeholder="Tell us a little about what you're looking for..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-navy">Send Enquiry</button>
+        <p class="form-status" style="color:var(--gold); font-weight:600;"></p>
+      </form>
+      <p style="margin-top:18px; font-size:0.9rem; color:var(--navy); opacity:0.8;">For a valuation, James checks your property against recent comparable sales on the official <a href="https://propertypriceregister.ie" target="_blank" rel="noopener" style="color:var(--navy); text-decoration:underline;">Property Price Register</a> — you're welcome to browse sales in your own area there too.</p>
+    </div>
+
+    <div>
+      <div class="info-card">
+        <div class="row">
+          <strong style="color:var(--gold);">☎</strong>
+          <div><strong>Phone</strong>083 382 0623</div>
+        </div>
+        <div class="row">
+          <strong style="color:var(--gold);">✉</strong>
+          <div><strong>Email</strong>james.quigg@quiggproperty.com</div>
+        </div>
+        <div class="row">
+          <strong style="color:var(--gold);">⚓</strong>
+          <div><strong>Office</strong>Cork, Ireland</div>
+        </div>
+        <div class="row">
+          <strong style="color:var(--gold);">🕘</strong>
+          <div><strong>Hours</strong>Mon–Fri 9am–6pm · Sat 10am–2pm</div>
+        </div>
+      </div>
+      <div class="map-embed">
+        <iframe src="https://www.google.com/maps?q=Cork,Ireland&output=embed" loading="lazy" title="Quigg Property location map"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer" id="site-footer"></footer>
+<script src="assets/footer.js"></script>
+<script src="assets/script.js"></script>
+</body>
+</html>
