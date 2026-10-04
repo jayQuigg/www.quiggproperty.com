@@ -238,3 +238,129 @@ footer.site-footer { background: #081729; color: rgba(255,255,255,0.75); padding
   letter-spacing: 0.04em; flex-wrap: wrap; gap: 12px;
 }
 .footer-bottom .tagline { color: var(--gold-light); }
+/* Page hero (interior pages) */
+.page-hero {
+  background: linear-gradient(180deg, rgba(11,35,65,0.78), rgba(11,35,65,0.93)), url('https://images.unsplash.com/photo-1560078361-c5af477c7086?q=80&w=1920&auto=format&fit=crop') center/cover;
+  color: var(--white); padding: 120px 0 70px; text-align: center;
+}
+.page-hero .eyebrow { color: var(--gold-light); }
+.breadcrumb { font-size: 0.8rem; color: rgba(255,255,255,0.7); margin-bottom: 12px; }
+.breadcrumb a { color: var(--gold-light); }
+
+/* Filters */
+.filter-bar {
+  background: var(--white); box-shadow: var(--shadow); border-radius: 4px; padding: 24px;
+  display: flex; flex-wrap: wrap; gap: 16px; align-items: end; margin-top: -60px; position: relative; z-index: 10;
+}
+.filter-bar .field { flex: 1; min-width: 160px; }
+.filter-bar label { display: block; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey); margin-bottom: 6px; }
+.filter-bar select, .filter-bar input { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 2px; font-family: var(--sans); }
+.results-count { color: var(--grey); margin: 32px 0 24px; font-size: 0.9rem; }
+
+/* Contact */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+@media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+.contact-form { display: grid; gap: 18px; }
+.contact-form .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 600px) { .contact-form .row2 { grid-template-columns: 1fr; } }
+.contact-form label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--grey); display: block; margin-bottom: 6px; }
+.contact-form input, .contact-form select, .contact-form textarea {
+  width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 2px; font-family: var(--sans); font-size: 0.95rem;
+}
+.contact-form textarea { min-height: 130px; resize: vertical; }
+.info-card { background: var(--white); box-shadow: var(--shadow); border-radius: 4px; padding: 32px; margin-bottom: 24px; }
+.info-card .row { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px; }
+.info-card .row:last-child { margin-bottom: 0; }
+.info-card .row strong { display: block; }
+.map-embed { border-radius: 4px; overflow: hidden; box-shadow: var(--shadow); height: 260px; }
+.map-embed iframe { width: 100%; height: 100%; border: 0; }
+
+/* Team */
+.team-card { text-align: center; }
+.team-card img { border-radius: 4px; margin-bottom: 18px; box-shadow: var(--shadow); aspect-ratio: 3/4; object-fit: cover; }
+.team-card .role { color: var(--gold); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; display: block; }
+
+/* Utility */
+.mt-0 { margin-top: 0; }
+.text-center { text-align: center; }
+
+/* ---- Contact form tidy-up ---- */
+.contact-form {
+  background: var(--white);
+  padding: 32px;
+  border-radius: 4px;
+  border-top: 3px solid var(--gold);
+  box-shadow: var(--shadow);
+  gap: 20px;
+  margin-top: 20px;
+}
+.contact-form .row2 > div { min-width: 0; }
+.contact-form label {
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  height: 48px;
+  padding: 0 14px;
+  background-color: var(--off-white);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--navy);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+.contact-form textarea {
+  height: auto;
+  min-height: 140px;
+  padding: 12px 14px;
+  line-height: 1.5;
+}
+.contact-form select {
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 40px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%230B2341' stroke-width='1.6'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  cursor: pointer;
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder { color: rgba(11,35,65,0.4); }
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  background-color: var(--white);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(200,164,90,0.2);
+}
+.contact-form button[type="submit"] {
+  width: 100%;
+  justify-content: center;
+  padding: 16px;
+  margin-top: 4px;
+}
+.contact-form .form-status { margin: 0; min-height: 1.2em; text-align: center; }
+@media (max-width: 600px) { .contact-form { padding: 22px; } }
+
+/* Contact info card: keep icons in an even column */
+.info-card .row > strong:first-child {
+  flex: 0 0 28px;
+  text-align: center;
+}
+
+/* ---- Desktop fixes ---- */
+/* 2x2 testimonials (needs higher specificity than .t-grid) */
+.t-grid.t-grid-two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 900px; margin: 0 auto; }
+@media (max-width: 700px) { .t-grid.t-grid-two { grid-template-columns: 1fr; } }
+
+/* Stop sideways scroll without breaking the sticky header */
+html, body { overflow-x: visible; }
+body { overflow-x: clip; }
+
+/* Fit the main banner to a laptop screen under the taller header */
+.hero { min-height: calc(100vh - 160px); }
