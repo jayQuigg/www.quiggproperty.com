@@ -8,9 +8,9 @@ document.getElementById('site-footer').innerHTML = `
         </div>
         <p style="max-width:320px;">Trusted locally, connected globally, powered by Keller Williams. Guiding Cork Harbour buyers, sellers and renters home since day one.</p>
         <div class="social-row">
-          <a href="#" aria-label="Facebook">f</a>
-          <a href="#" aria-label="Instagram">ig</a>
-          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="https://www.facebook.com/profile.php?id=61560839201506" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+          <a href="https://www.instagram.com/cobhauctioneerkw/" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
+          <a href="https://www.tiktok.com/@kellerwilliamscob?lang=en" target="_blank" rel="noopener" aria-label="TikTok">tt</a>
         </div>
       </div>
       <div>
