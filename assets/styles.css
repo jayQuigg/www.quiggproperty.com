@@ -67,3 +67,15 @@
   flex: 0 0 28px;
   text-align: center;
 }
+
+/* ---- Desktop fixes ---- */
+/* 2x2 testimonials (needs higher specificity than .t-grid) */
+.t-grid.t-grid-two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 900px; margin: 0 auto; }
+@media (max-width: 700px) { .t-grid.t-grid-two { grid-template-columns: 1fr; } }
+
+/* Stop sideways scroll without breaking the sticky header */
+html, body { overflow-x: visible; }
+body { overflow-x: clip; }
+
+/* Fit the main banner to a laptop screen under the taller header */
+.hero { min-height: calc(100vh - 160px); }
