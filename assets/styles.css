@@ -241,4 +241,19 @@ footer.site-footer { background: #081729; color: rgba(255,255,255,0.75); padding
 
 /* Page hero (interior pages) */
 .page-hero {
-  background: linear-gradient(180deg, rgba(11,35,65,0.78), rgba(11,35,65,0.93)), url('https://images.unsplash.com/photo-1560078361-c5af477c7086?q=80&w=1920&auto=format&f
+  background: linear-gradient(180deg, rgba(11,35,65,0.78), rgba(11,35,65,0.93)), url('https://images.unsplash.com/photo-1560078361-c5af477c7086?q=80&w=1920&auto=format&fit=crop') center/cover;
+  color: var(--white); padding: 120px 0 70px; text-align: center;
+}
+.page-hero .eyebrow { color: var(--gold-light); }
+.breadcrumb { font-size: 0.8rem; color: rgba(255,255,255,0.7); margin-bottom: 12px; }
+.breadcrumb a { color: var(--gold-light); }
+
+/* Filters */
+.filter-bar {
+  background: var(--white); box-shadow: var(--shadow); border-radius: 4px; padding: 24px;
+  display: flex; flex-wrap: wrap; gap: 16px; align-items: end; margin-top: -60px; position: relative; z-index: 10;
+}
+.filter-bar .field { flex: 1; min-width: 160px; }
+.filter-bar label { display: block; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey); margin-bottom: 6px; }
+.filter-bar select, .filter-bar input { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 2px; font-family: var(--sans); }
+.result
