@@ -100,8 +100,13 @@ nav.main-nav a:hover, nav.main-nav a.active { color: var(--gold); border-color: 
 }
 .hero-inner { max-width: 720px; }
 .hero .eyebrow { color: var(--gold-light); }
+.hero h1 { color: var(--white); }
 .hero p.lead { color: rgba(255,255,255,0.85); font-size: 1.15rem; max-width: 560px; }
 .hero-actions { display: flex; gap: 16px; margin-top: 28px; flex-wrap: wrap; }
+
+@media (max-width: 700px) {
+  .hero { align-items: flex-start; padding-top: 64px; }
+}
 
 /* Search bar */
 .search-bar {
