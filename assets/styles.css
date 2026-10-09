@@ -229,6 +229,18 @@ html, body { overflow-x: hidden; max-width: 100%; }
 .value-card { text-align: center; padding: 32px 20px; background: var(--white); border-radius: 4px; box-shadow: var(--shadow); }
 .value-card .icon { width: 52px; height: 52px; margin: 0 auto 16px; color: var(--gold); }
 
+/* Service cards that link to a dedicated service page */
+.services-grid .value-card { display: flex; flex-direction: column; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.services-grid .value-card:hover { transform: translateY(-4px); box-shadow: 0 24px 55px -20px rgba(11,35,65,0.3); }
+.services-grid .value-card p { flex-grow: 1; }
+.service-link {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  margin-top: 20px; padding: 10px 20px; border: 1px solid var(--navy); border-radius: 2px;
+  font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;
+  color: var(--navy); transition: all 0.2s ease;
+}
+.service-link:hover { background: var(--navy); color: var(--white); }
+
 /* Testimonials */
 .testimonials { background: var(--navy); color: var(--white); }
 .testimonials .section-head h2, .testimonials .section-head .eyebrow { color: var(--white); }
