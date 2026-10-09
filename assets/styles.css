@@ -176,6 +176,12 @@ section { padding: 96px 0; }
 
 .center-cta { text-align: center; margin-top: 48px; }
 
+/* Status badges for Sold / Buyer's Agent / Let Agreed listings */
+.card .tag-right { left: auto; right: 14px; }
+.card .tag-sold { background: var(--navy); color: var(--white); }
+.card .tag-buyers-agent { background: #6C3FC5; color: var(--white); }
+.card .tag-let-agreed { background: #1F8A4C; color: var(--white); top: 50px; }
+
 /* About / split */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
 @media (max-width: 900px) { .split { grid-template-columns: 1fr; gap: 32px; } }
