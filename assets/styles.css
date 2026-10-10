@@ -352,3 +352,13 @@ footer.site-footer { background: #081729; color: rgba(255,255,255,0.75); padding
 .page-hero.page-hero-about {
   background: linear-gradient(180deg, rgba(11,35,65,0.50), rgba(11,35,65,0.78)), url('hero-roches-point.jpg') center 55%/cover no-repeat;
 }
+
+/* Marketing packages page */
+.tier-grid.tier-grid-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 980px) { .tier-grid.tier-grid-3 { grid-template-columns: 1fr; max-width: 560px; margin-left: auto; margin-right: auto; } }
+.btn-outline-navy { border-color: var(--navy); color: var(--navy); background: transparent; }
+.btn-outline-navy:hover { background: var(--navy); color: var(--white); }
+.btn-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 8px; }
+.cost-note { max-width: 760px; margin: 40px auto 0; padding: 18px 22px; border-left: 3px solid var(--gold); background: var(--off-white); font-size: 0.95rem; color: var(--navy); }
+.cost-note p { margin: 0; color: var(--navy); }
+
