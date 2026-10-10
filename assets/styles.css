@@ -347,4 +347,8 @@ footer.site-footer { background: #081729; color: rgba(255,255,255,0.75); padding
 .filter-bar .field { flex: 1; min-width: 160px; }
 .filter-bar label { display: block; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey); margin-bottom: 6px; }
 .filter-bar select, .filter-bar input { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 2px; font-family: var(--sans); }
-.result
+
+/* About page hero: Roches Point lighthouse */
+.page-hero.page-hero-about {
+  background: linear-gradient(180deg, rgba(11,35,65,0.50), rgba(11,35,65,0.78)), url('hero-roches-point.jpg') center 55%/cover no-repeat;
+}
