@@ -36,4 +36,8 @@
     <loc>https://www.quiggproperty.com/marketing-packages.html</loc>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://www.quiggproperty.com/testimonials.html</loc>
+    <priority>0.7</priority>
+  </url>
 </urlset>

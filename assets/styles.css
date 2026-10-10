@@ -362,3 +362,10 @@ footer.site-footer { background: #081729; color: rgba(255,255,255,0.75); padding
 .cost-note { max-width: 760px; margin: 40px auto 0; padding: 18px 22px; border-left: 3px solid var(--gold); background: var(--off-white); font-size: 0.95rem; color: var(--navy); }
 .cost-note p { margin: 0; color: var(--navy); }
 
+
+/* Stacked testimonials page */
+.t-stack { display: flex; flex-direction: column; gap: 24px; max-width: 820px; margin: 0 auto; }
+.t-card-full { padding: 36px 40px; }
+.t-card-full p { margin: 0 0 14px; line-height: 1.7; }
+.t-card-full .who { margin-top: 18px; font-size: 0.95rem; }
+@media (max-width: 560px) { .t-card-full { padding: 26px 22px; } }
