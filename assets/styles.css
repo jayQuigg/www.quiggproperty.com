@@ -369,3 +369,16 @@ footer.site-footer { background: #081729; color: rgba(255,255,255,0.75); padding
 .t-card-full p { margin: 0 0 14px; line-height: 1.7; }
 .t-card-full .who { margin-top: 18px; font-size: 0.95rem; }
 @media (max-width: 560px) { .t-card-full { padding: 26px 22px; } }
+
+/* Header spacing: keep phone number clear of the menu */
+.header-actions { margin-left: 48px; white-space: nowrap; flex-shrink: 0; }
+@media (max-width: 1250px) and (min-width: 901px) {
+  nav.main-nav { gap: 20px; }
+  .header-actions { margin-left: 28px; }
+  .brand-text strong { font-size: 1.7rem; }
+  .brand-text span { letter-spacing: 0.12em; font-size: 0.72rem; }
+  .brand img { width: 68px; height: 68px; }
+}
+@media (max-width: 900px) { .header-actions { margin-left: 0; } }
+@media (min-width: 1251px) { .brand { flex-shrink: 0; } .brand-text span { white-space: nowrap; } }
+@media (min-width: 901px) { .brand { margin-right: 32px; } }
