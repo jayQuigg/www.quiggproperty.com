@@ -382,3 +382,8 @@ footer.site-footer { background: #081729; color: rgba(255,255,255,0.75); padding
 @media (max-width: 900px) { .header-actions { margin-left: 0; } }
 @media (min-width: 1251px) { .brand { flex-shrink: 0; } .brand-text span { white-space: nowrap; } }
 @media (min-width: 901px) { .brand { margin-right: 32px; } }
+
+/* Footer: stop long email address overflowing on mobile */
+.footer-grid > div { min-width: 0; }
+.footer-grid li { overflow-wrap: anywhere; }
+@media (max-width: 560px) { .footer-grid > div:last-child { grid-column: 1 / -1; } }
