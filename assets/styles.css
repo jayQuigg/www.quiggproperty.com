@@ -395,3 +395,7 @@ footer.site-footer { background: #081729; color: rgba(255,255,255,0.75); padding
   .contact-form input, .contact-form select, .contact-form textarea { font-size: 16px; max-width: 100%; }
   .contact-form select { -webkit-appearance: none; appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--navy) 50%), linear-gradient(135deg, var(--navy) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%; background-size: 6px 6px, 6px 6px; background-repeat: no-repeat; padding-right: 36px; }
 }
+
+/* Powered by (About page footer) */
+.powered-by { flex: 0 0 100%; display: flex; justify-content: flex-end; align-items: center; gap: 12px; color: var(--gold-light); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
+.powered-by img { width: 48px; height: 48px; display: block; }
