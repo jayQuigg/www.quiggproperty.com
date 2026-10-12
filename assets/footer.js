@@ -43,7 +43,7 @@ document.getElementById('site-footer').innerHTML = `
     </div>
     <div class="footer-bottom">
       <span>&copy; ${new Date().getFullYear()} Quigg Property. All rights reserved. Licensed by the PSRA.</span>
-      <span class="tagline">Guiding You Home. Moving Cork Forward. Experience You Can Trust.</span>
+      <span class="tagline">Guiding You Home. Experience You Can Trust.</span>
     </div>
   </div>
 `;
