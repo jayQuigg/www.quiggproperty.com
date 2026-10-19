@@ -299,9 +299,10 @@ footer.site-footer { background: #081729; color: rgba(255,255,255,0.75); padding
 
 /* Page hero (interior pages) */
 .page-hero {
-  background: linear-gradient(180deg, rgba(11,35,65,0.78), rgba(11,35,65,0.93)), url('hero-cobh.jpg') center 30%/cover no-repeat;
-  color: var(--white); padding: 120px 0 70px; text-align: center;
+  background: linear-gradient(180deg, rgba(11,35,65,0.70), rgba(11,35,65,0.88)), url('hero-cobh.jpg') center 38%/cover no-repeat;
+  color: var(--white); padding: 170px 0 110px; text-align: center; min-height: 420px; display: flex; align-items: center; justify-content: center;
 }
+.page-hero .container { width: 100%; }
 .page-hero .eyebrow { color: var(--gold-light); }
 .page-hero h1 { color: var(--white); }
 .breadcrumb { font-size: 0.8rem; color: rgba(255,255,255,0.7); margin-bottom: 12px; }
