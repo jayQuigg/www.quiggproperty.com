@@ -75,7 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener('submit', () => {
       if (!statusEl || !submitBtn) return; // let the native submit proceed either way
 
-      submitBtn.disabled = true;
+      // NOTE: do not disable submitBtn here — disabling the button that triggered
+      // submission, synchronously inside this event, can cancel the native form
+      // submission in some browsers. Only change its text/status, nothing more.
       const originalLabel = submitBtn.textContent;
       submitBtn.textContent = 'Sending…';
       statusEl.style.color = 'var(--navy)';
