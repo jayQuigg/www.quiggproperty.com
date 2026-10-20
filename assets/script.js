@@ -64,5 +64,34 @@ document.addEventListener('DOMContentLoaded', () => {
       const msg = contactForm.querySelector('.form-status');
       if (msg) msg.textContent = 'Thanks — your enquiry has been sent. James will be in touch shortly.';
     }
+
+    // Fast-track 60-second valuation flow: ?valuation=1 pre-fills and jumps to the form
+    if (new URLSearchParams(location.search).get('valuation') === '1') {
+      if (reason) {
+        reason.value = 'Free valuation';
+        toggleValuationFields();
+      }
+      const heading = document.querySelector('.contact-form-heading');
+      const subtext = document.querySelector('.contact-form-subtext');
+      if (heading) heading.textContent = 'Get Your 60-Second Valuation';
+      if (subtext) subtext.textContent = 'Just the key details — takes about 60 seconds. James will value your property personally and get back to you within one business day.';
+
+      const wrapper = document.getElementById('valuation-form');
+      if (wrapper) {
+        let badge = wrapper.querySelector('.valuation-badge');
+        if (!badge) {
+          badge = document.createElement('span');
+          badge.className = 'valuation-badge';
+          badge.textContent = '⚡ 60-Second Valuation';
+          badge.style.cssText = 'display:inline-block; background:var(--gold); color:var(--navy); font-weight:700; font-size:0.78rem; letter-spacing:0.05em; text-transform:uppercase; padding:6px 14px; border-radius:999px; margin-bottom:12px;';
+          wrapper.insertBefore(badge, wrapper.firstChild);
+        }
+      }
+
+      window.requestAnimationFrame(() => {
+        const target = document.getElementById('valuation-form');
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
   }
 });
