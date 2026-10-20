@@ -59,11 +59,51 @@ document.addEventListener('DOMContentLoaded', () => {
       toggleValuationFields();
     }
 
-    // After a successful send, FormSubmit redirects back here with ?sent=true
+    // After a successful send (legacy non-JS redirect path), FormSubmit sends back ?sent=true
     if (new URLSearchParams(location.search).get('sent') === 'true') {
       const msg = contactForm.querySelector('.form-status');
-      if (msg) msg.textContent = 'Thanks — your enquiry has been sent. James will be in touch shortly.';
+      if (msg) { msg.textContent = 'Thanks — your enquiry has been sent. James will be in touch shortly.'; msg.style.color = 'var(--gold)'; }
     }
+
+    // Submit via AJAX so a blocked/failed send shows a clear message instead of doing nothing
+    const statusEl = contactForm.querySelector('.form-status');
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!statusEl || !submitBtn) { contactForm.submit(); return; }
+
+      submitBtn.disabled = true;
+      const originalLabel = submitBtn.textContent;
+      submitBtn.textContent = 'Sending…';
+      statusEl.style.color = 'var(--navy)';
+      statusEl.textContent = 'Sending your enquiry…';
+
+      const data = new FormData(contactForm);
+      fetch(contactForm.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(res => {
+        if (!res.ok) throw new Error('Server responded with ' + res.status);
+        return res.json().catch(() => ({}));
+      })
+      .then(() => {
+        statusEl.style.color = 'var(--gold)';
+        statusEl.textContent = 'Thanks — your enquiry has been sent. James will be in touch shortly.';
+        contactForm.reset();
+        if (reason) toggleValuationFields();
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      })
+      .catch(err => {
+        console.error('Contact form send failed:', err);
+        statusEl.style.color = '#b23b3b';
+        statusEl.innerHTML = 'Sorry, something blocked that enquiry from sending (often a browser ad-blocker or privacy extension). Please try again, or email <a href="mailto:james.quigg@quiggproperty.com" style="color:#b23b3b; text-decoration:underline;">james.quigg@quiggproperty.com</a> or call <a href="tel:+353833820623" style="color:#b23b3b; text-decoration:underline;">083 382 0623</a> directly.';
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      });
+    });
 
     // Fast-track 60-second valuation flow: ?valuation=1 pre-fills and jumps to the form
     if (new URLSearchParams(location.search).get('valuation') === '1') {

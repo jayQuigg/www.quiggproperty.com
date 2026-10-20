@@ -19,7 +19,7 @@
 <meta name="twitter:title" content="Contact Us | Value My Property | Quigg Property">
 <meta name="twitter:description" content="Contact Quigg Property, trusted auctioneers in Cobh and estate agents in Cobh. Selling my home? Value my property today with a free, no-obligation valuation.">
 <meta name="twitter:image" content="https://www.quiggproperty.com/assets/brand-plate.jpg">
-<link rel="stylesheet" href="assets/styles.css?v=5">
+<link rel="stylesheet" href="assets/styles.css?v=6">
 </head>
 <body>
 
@@ -57,7 +57,7 @@
     <div id="valuation-form">
       <h2 class="contact-form-heading">Send an Enquiry</h2>
       <p class="contact-form-subtext">Fill out the form below and a member of our team will be in touch within one business day.</p>
-      <form class="contact-form" action="https://formsubmit.co/james.quigg@quiggproperty.com" method="POST">
+      <form class="contact-form" action="https://formsubmit.co/ajax/james.quigg@quiggproperty.com" method="POST" data-fallback-action="https://formsubmit.co/james.quigg@quiggproperty.com">
         <input type="hidden" name="_subject" value="New website enquiry — Quigg Property">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_next" value="https://www.quiggproperty.com/contact.html?sent=true">
@@ -121,7 +121,7 @@
           <textarea id="message" name="message" placeholder="Tell us a little about what you're looking for..."></textarea>
         </div>
         <button type="submit" class="btn btn-navy">Send Enquiry</button>
-        <p class="form-status" style="color:var(--gold); font-weight:600;"></p>
+        <p class="form-status" aria-live="polite" style="font-weight:600;"></p>
       </form>
       <p style="margin-top:18px; font-size:0.9rem; color:var(--navy); opacity:0.8;">For a valuation, James checks your property against recent comparable sales on the official <a href="https://propertypriceregister.ie" target="_blank" rel="noopener" style="color:var(--navy); text-decoration:underline;">Property Price Register</a> — you're welcome to browse sales in your own area there too.</p>
     </div>
@@ -154,6 +154,6 @@
 
 <footer class="site-footer" id="site-footer"></footer>
 <script src="assets/footer.js"></script>
-<script src="assets/script.js?v=2"></script>
+<script src="assets/script.js?v=3"></script>
 </body>
 </html>
