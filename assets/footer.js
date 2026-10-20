@@ -30,6 +30,7 @@ document.getElementById('site-footer').innerHTML = `
           <li><a href="listings.html?type=sale">Buying a Home</a></li>
           <li><a href="listings.html?type=rent">Renting</a></li>
           <li><a href="contact.html">Property Management</a></li>
+          <li><a href="valuation-services.html">Probate &amp; Life-Event Valuations</a></li>
         </ul>
       </div>
       <div>
