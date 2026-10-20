@@ -65,49 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (msg) { msg.textContent = 'Thanks — your enquiry has been sent. James will be in touch shortly.'; msg.style.color = 'var(--gold)'; }
     }
 
-    // Send via the visitor's own email app (mailto:) instead of a third-party form
-    // backend. This has no server dependency at all — formsubmit.co kept hanging/
-    // failing during testing (possibly rate-limited from repeated test sends), so
-    // this removes that point of failure entirely and is guaranteed to work as long
-    // as the visitor has a default mail app, which almost everyone does.
-    const statusEl = contactForm.querySelector('.form-status');
-    contactForm.addEventListener('submit', (e) => {
-      if (!contactForm.checkValidity()) {
-        contactForm.reportValidity();
-        return; // let the browser show its native required-field prompts
-      }
-      e.preventDefault();
-
-      const val = (name) => {
-        const field = contactForm.querySelector(`[name="${name}"]`);
-        return field ? field.value.trim() : '';
-      };
-
-      const lines = [
-        `Name: ${val('name')}`,
-        `Email: ${val('email')}`,
-        `Phone: ${val('phone')}`,
-        `Interested in: ${val('reason')}`
-      ];
-      if (val('reason') === 'Free valuation') {
-        lines.push(
-          `Property address: ${val('prop_address')}`,
-          `Property type: ${val('prop_type')}`,
-          `Approx. bedrooms: ${val('prop_beds')}`,
-          `Approx. size (sqm): ${val('prop_size')}`
-        );
-      }
-      lines.push('', 'Message:', val('message') || '(none)');
-
-      const subject = encodeURIComponent('New website enquiry — Quigg Property');
-      const body = encodeURIComponent(lines.join('\n'));
-      window.location.href = `mailto:james.quigg@quiggproperty.com?subject=${subject}&body=${body}`;
-
-      if (statusEl) {
-        statusEl.style.color = 'var(--gold)';
-        statusEl.textContent = 'Your email app should now be open with your enquiry ready to send — just hit send there. If nothing opened, please email james.quigg@quiggproperty.com or call 083 382 0623 directly.';
-      }
-    });
+    // Deliberately no JS on the submit event here — this is the exact plain native
+    // <form action="..."> POST that was confirmed working earlier. Diagnosing the
+    // current failure with real network data before adding any more JS on top of it.
 
     // Fast-track 60-second valuation flow: ?valuation=1 pre-fills and jumps to the form
     if (new URLSearchParams(location.search).get('valuation') === '1') {
