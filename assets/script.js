@@ -65,12 +65,15 @@ document.addEventListener('DOMContentLoaded', () => {
       if (msg) { msg.textContent = 'Thanks — your enquiry has been sent. James will be in touch shortly.'; msg.style.color = 'var(--gold)'; }
     }
 
-    // Submit via AJAX so a blocked/failed send shows a clear message instead of doing nothing
+    // Native form submission (full page POST) — this is what actually works reliably;
+    // AJAX/fetch to formsubmit.co gets silently blocked by many ad-blockers, whereas a
+    // real form POST/navigation is not. We just show a quick "Sending…" state and a
+    // safety-net message if the browser is still on this page several seconds later
+    // (meaning the POST itself likely never left, e.g. blocked by an extension).
     const statusEl = contactForm.querySelector('.form-status');
     const submitBtn = contactForm.querySelector('button[type="submit"]');
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (!statusEl || !submitBtn) { contactForm.submit(); return; }
+    contactForm.addEventListener('submit', () => {
+      if (!statusEl || !submitBtn) return; // let the native submit proceed either way
 
       submitBtn.disabled = true;
       const originalLabel = submitBtn.textContent;
@@ -78,31 +81,14 @@ document.addEventListener('DOMContentLoaded', () => {
       statusEl.style.color = 'var(--navy)';
       statusEl.textContent = 'Sending your enquiry…';
 
-      const data = new FormData(contactForm);
-      fetch(contactForm.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      })
-      .then(res => {
-        if (!res.ok) throw new Error('Server responded with ' + res.status);
-        return res.json().catch(() => ({}));
-      })
-      .then(() => {
-        statusEl.style.color = 'var(--gold)';
-        statusEl.textContent = 'Thanks — your enquiry has been sent. James will be in touch shortly.';
-        contactForm.reset();
-        if (reason) toggleValuationFields();
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalLabel;
-      })
-      .catch(err => {
-        console.error('Contact form send failed:', err);
+      // If we're still here after 8s, the page never navigated away — something
+      // blocked the request. Let the user know and give them a direct fallback.
+      setTimeout(() => {
         statusEl.style.color = '#b23b3b';
-        statusEl.innerHTML = 'Sorry, something blocked that enquiry from sending (often a browser ad-blocker or privacy extension). Please try again, or email <a href="mailto:james.quigg@quiggproperty.com" style="color:#b23b3b; text-decoration:underline;">james.quigg@quiggproperty.com</a> or call <a href="tel:+353833820623" style="color:#b23b3b; text-decoration:underline;">083 382 0623</a> directly.';
+        statusEl.innerHTML = 'This is taking longer than expected — something may be blocking the form (often a browser ad-blocker or privacy extension). Please try again, or email <a href="mailto:james.quigg@quiggproperty.com" style="color:#b23b3b; text-decoration:underline;">james.quigg@quiggproperty.com</a> or call <a href="tel:+353833820623" style="color:#b23b3b; text-decoration:underline;">083 382 0623</a> directly.';
         submitBtn.disabled = false;
         submitBtn.textContent = originalLabel;
-      });
+      }, 8000);
     });
 
     // Fast-track 60-second valuation flow: ?valuation=1 pre-fills and jumps to the form
