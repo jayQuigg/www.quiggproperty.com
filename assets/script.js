@@ -65,32 +65,48 @@ document.addEventListener('DOMContentLoaded', () => {
       if (msg) { msg.textContent = 'Thanks — your enquiry has been sent. James will be in touch shortly.'; msg.style.color = 'var(--gold)'; }
     }
 
-    // Native form submission (full page POST) — this is what actually works reliably;
-    // AJAX/fetch to formsubmit.co gets silently blocked by many ad-blockers, whereas a
-    // real form POST/navigation is not. We just show a quick "Sending…" state and a
-    // safety-net message if the browser is still on this page several seconds later
-    // (meaning the POST itself likely never left, e.g. blocked by an extension).
+    // Send via the visitor's own email app (mailto:) instead of a third-party form
+    // backend. This has no server dependency at all — formsubmit.co kept hanging/
+    // failing during testing (possibly rate-limited from repeated test sends), so
+    // this removes that point of failure entirely and is guaranteed to work as long
+    // as the visitor has a default mail app, which almost everyone does.
     const statusEl = contactForm.querySelector('.form-status');
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    contactForm.addEventListener('submit', () => {
-      if (!statusEl || !submitBtn) return; // let the native submit proceed either way
+    contactForm.addEventListener('submit', (e) => {
+      if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return; // let the browser show its native required-field prompts
+      }
+      e.preventDefault();
 
-      // NOTE: do not disable submitBtn here — disabling the button that triggered
-      // submission, synchronously inside this event, can cancel the native form
-      // submission in some browsers. Only change its text/status, nothing more.
-      const originalLabel = submitBtn.textContent;
-      submitBtn.textContent = 'Sending…';
-      statusEl.style.color = 'var(--navy)';
-      statusEl.textContent = 'Sending your enquiry…';
+      const val = (name) => {
+        const field = contactForm.querySelector(`[name="${name}"]`);
+        return field ? field.value.trim() : '';
+      };
 
-      // If we're still here after 8s, the page never navigated away — something
-      // blocked the request. Let the user know and give them a direct fallback.
-      setTimeout(() => {
-        statusEl.style.color = '#b23b3b';
-        statusEl.innerHTML = 'This is taking longer than expected — something may be blocking the form (often a browser ad-blocker or privacy extension). Please try again, or email <a href="mailto:james.quigg@quiggproperty.com" style="color:#b23b3b; text-decoration:underline;">james.quigg@quiggproperty.com</a> or call <a href="tel:+353833820623" style="color:#b23b3b; text-decoration:underline;">083 382 0623</a> directly.';
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalLabel;
-      }, 8000);
+      const lines = [
+        `Name: ${val('name')}`,
+        `Email: ${val('email')}`,
+        `Phone: ${val('phone')}`,
+        `Interested in: ${val('reason')}`
+      ];
+      if (val('reason') === 'Free valuation') {
+        lines.push(
+          `Property address: ${val('prop_address')}`,
+          `Property type: ${val('prop_type')}`,
+          `Approx. bedrooms: ${val('prop_beds')}`,
+          `Approx. size (sqm): ${val('prop_size')}`
+        );
+      }
+      lines.push('', 'Message:', val('message') || '(none)');
+
+      const subject = encodeURIComponent('New website enquiry — Quigg Property');
+      const body = encodeURIComponent(lines.join('\n'));
+      window.location.href = `mailto:james.quigg@quiggproperty.com?subject=${subject}&body=${body}`;
+
+      if (statusEl) {
+        statusEl.style.color = 'var(--gold)';
+        statusEl.textContent = 'Your email app should now be open with your enquiry ready to send — just hit send there. If nothing opened, please email james.quigg@quiggproperty.com or call 083 382 0623 directly.';
+      }
     });
 
     // Fast-track 60-second valuation flow: ?valuation=1 pre-fills and jumps to the form
