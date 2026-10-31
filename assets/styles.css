@@ -295,6 +295,8 @@ footer.site-footer { background: #081729; color: rgba(255,255,255,0.75); padding
   letter-spacing: 0.04em; flex-wrap: wrap; gap: 12px;
 }
 .footer-bottom .tagline { color: var(--gold-light); }
+.footer-membership { display: flex; justify-content: center; padding: 0 0 28px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; }
+.footer-membership img { height: 32px; width: auto; opacity: 0.9; }
 
 /* Page hero (interior pages) */
 .page-hero {

@@ -46,5 +46,8 @@ document.getElementById('site-footer').innerHTML = `
       <span>&copy; ${new Date().getFullYear()} Quigg Property. All rights reserved. Licensed by the PSRA.</span>
       <span class="tagline">Guiding You Home. Experience You Can Trust.</span>
     </div>
+    <div class="footer-membership">
+      <img src="assets/chamber-logo.png" alt="Cobh &amp; Harbour Chamber member — Advancing business together">
+    </div>
   </div>
 `;
