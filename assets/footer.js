@@ -18,6 +18,7 @@ document.getElementById('site-footer').innerHTML = `
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="listings.html">Listings</a></li>
+          <li><a href="cobh-estate-agents.html">Cobh Property Guide</a></li>
           <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="testimonials.html">Testimonials</a></li>
